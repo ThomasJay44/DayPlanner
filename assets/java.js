@@ -1,72 +1,24 @@
-$(document).ready(function () {
-
-    var x = [9, 10, 11, 12, 13, 14, 15, 16, 17];
-
-
-
-
-    //moment.js to put current date on jumbotron
-    var currentDate = moment().format("dddd, MMMM Do YYYY");
-    $("#currentDay").text(currentDate);
-    var currentTime = moment().format("H");
-
-    //forEach loops through x[], pushes "time" elements to new startTime[] in the "00 AM/PM" format
-    x.forEach(function (time, index) {
-        var startTime = [];
-        startTime.push(moment().hour(time).format("h A"));
-        // console.log(parseInt(startTime));
-        // console.log(moment().hour());
-
-        //Declare new var(s) and initialize to new el's
-        var newDiv = $("<div>");
-        var newSpan = $("<span>");
-        var newTextInput = $("<input>");
-        var newBtn = $("<button>");
-
-
-        //appends new el's to container, parent or sibling respectively. Adds B/S classes to new el's 
-        $(".container").append(newDiv);
-        $(".container").addClass("mb-5");
-
-        newDiv.addClass("time-block input-group input-group-prepend");
-        newDiv.attr("data-val", index);
-        newDiv.append(newSpan);
-        newSpan.addClass("input-group-text");
-        newSpan.addClass("start-time")
-        newSpan.text(startTime);
-        newDiv.append(newTextInput);
-        newTextInput.attr("type", "text");
-        newTextInput.attr("data", "data-input" + index);
-        newTextInput.addClass("form-control")
-        newTextInput.attr("data", "data-text" + index);
-        newDiv.append(newBtn);
-        newBtn.addClass("btn btn-outline-secondary");
-
-        /* END OF FOREACH()*/
-    });
-
-    //click event 
-    $("button").on("click", function (event) {
-        event.preventDefault();
-
-        var textInput = $(this).siblings("input").attr("data");
-        var textVal = $(this).siblings("input").val();
-        localStorage.setItem(textInput, textVal);
-        var lsVal = localStorage.getItem(textInput);
-        $(this).siblings("input").text(lsVal);
-    });
-
-    //updated width of time block span and changed btn text to "SAVE"
-    // Consider using fontawesome icon for save feature
-    $(".input-group-text").css("width", "100px");
-    $("button").text("SAVE"); // update with icon from font-awesome
-
-
-})
-
-
-
-
-
-
-
+// Wrap all code that interacts with the DOM in a call to jQuery to ensure that
+// the code isn't run until the browser has finished rendering all the elements
+// in the html.
+$(function () {
+    // TODO: Add a listener for click events on the save button. This code should
+    // use the id in the containing time-block as a key to save the user input in
+    // local storage. HINT: What does `this` reference in the click listener
+    // function? How can DOM traversal be used to get the "hour-x" id of the
+    // time-block containing the button that was clicked? How might the id be
+    // useful when saving the description in local storage?
+    //
+    // TODO: Add code to apply the past, present, or future class to each time
+    // block by comparing the id to the current hour. HINTS: How can the id
+    // attribute of each time-block be used to conditionally add or remove the
+    // past, present, and future classes? How can Day.js be used to get the
+    // current hour in 24-hour time?
+    //
+    // TODO: Add code to get any user input that was saved in localStorage and set
+    // the values of the corresponding textarea elements. HINT: How can the id
+    // attribute of each time-block be used to do this?
+    //
+    // TODO: Add code to display the current date in the header of the page.
+  });
+  
