@@ -1,8 +1,10 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var timeBlock = $('.time-block')
+var timeBlock = $('.time-block');
 var saveButton = $(".saveBtn");
+var container = $(".container");
+var description = $(".description");
 
 function currentTime(){
     var currentDate = dayjs().format('dddd, MMMM D YYYY');
@@ -12,6 +14,12 @@ function currentTime(){
 };
 
 function setColor() {
+
+    timeBlock.each(function(i){
+        $(this).children("textarea").val(localStorage.getItem($(this).attr("id")));
+    })
+
+
     timeBlock.each(function(i){
         var actualTime = parseInt(dayjs().format('H'));
         var scheduleTime = parseInt($(this).attr('id').split('-')[1]);
