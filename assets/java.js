@@ -2,6 +2,7 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 var timeBlockHour = $('.time-block')
+var saveButton = $(".saveBtn");
 
 function currentTime(){
     var currentDate = dayjs().format('dddd, MMMM D YYYY');
@@ -29,6 +30,12 @@ function setColor() {
         }
     })
 }
+
+saveButton.on('click', function (){
+    timeBlockHour.each(function(i) {
+        localStorage.setItem($(this).attr("id"), $(this).children("textarea").val());
+    })
+});
 
 $(function () {
     currentTime()
